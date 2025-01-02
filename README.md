@@ -16,7 +16,7 @@ The project combines modern web development technologies to deliver an interacti
 - **Card Shuffle:** Cards are shuffled before each game, ensuring a fresh challenge every time.
 - **Animated Transitions:** Smooth card flipping and fade-in animations for a delightful experience.
 - **Attempts Tracking:** Track how many attempts were made before finishing game.
-- **Screen Resolutions:** Optimized for screens 1920\*1080px .
+- **Screen Resolutions:** Optimized for screens with a resolution of 1920×1080px and automatically adapts to devices with predefined DPI scaling (e.g., 1.25 or higher) set at the operating system level.
 
 ## **Technologies Used**
 

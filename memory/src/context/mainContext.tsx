@@ -1,4 +1,4 @@
-import React, { createContext, useState, ReactNode } from "react";
+import React, { createContext, useState, ReactNode, useEffect } from "react";
 import { Card } from "src/types/types";
 
 interface Props {
@@ -23,6 +23,7 @@ interface ContextData {
   playAgain: () => Promise<Card[]>;
   numberOfGuesses: number;
   setNumberOfGuesses: (num: any) => void;
+  devicePixelRatio: number;
 }
 
 export const mainContext = createContext({} as ContextData);
@@ -96,10 +97,18 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
         position: predefinedLandingPositions[index],
       }));
     } catch (error) {
-      console.error("Error generating new game cards:", error);
       throw new Error("Failed to start a new game.");
     }
   };
+  const [devicePixelRatio, setDevicePixelRatio] = useState<number>(1);
+
+  useEffect(() => {
+    const ratio = window.devicePixelRatio;
+    if (ratio != 1) {
+      setDevicePixelRatio(ratio);
+    }
+    console.log("DPI scaling detected:", ratio);
+  }, []);
 
   return (
     <mainContext.Provider
@@ -115,6 +124,7 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
         playAgain,
         numberOfGuesses,
         setNumberOfGuesses,
+        devicePixelRatio,
       }}
     >
       {children}

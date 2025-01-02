@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import CardComponentGame from "src/components/CardComponentGame";
 import CardOnTop from "src/components/CardOnTop";
-import { Card, Position } from "src/types/types";
+
 import { IoMdExit } from "react-icons/io";
 import { useRouter } from "next/router";
 import { mainContext } from "src/context/mainContext";
 import { RiRestartLine } from "react-icons/ri";
+import { Card, Position } from "src/types/types";
 
 interface InGameProps {
   cardsForPlayingProps: Card[];
@@ -18,6 +19,7 @@ const InGame: React.FC<InGameProps> = ({ cardsForPlayingProps }) => {
     playAgain,
     numberOfGuesses,
     setNumberOfGuesses,
+    devicePixelRatio,
   } = useContext(mainContext);
   const router = useRouter();
 
@@ -38,9 +40,6 @@ const InGame: React.FC<InGameProps> = ({ cardsForPlayingProps }) => {
     );
     setOpennedCards((prev) => [...prev, { ...clickedCard, isFlipped: true }]);
   };
-  console.log(cardsForPlaying);
-  console.log(opennedCards.length);
-
   useEffect(() => {
     if (opennedCards.length == 2) {
       setTimeout(() => {
@@ -96,9 +95,17 @@ const InGame: React.FC<InGameProps> = ({ cardsForPlayingProps }) => {
           />
         ))}
       </div>
-      <div className="counterDiv">
+      <div
+        className="counterDiv"
+        style={{ fontSize: devicePixelRatio >= 1.25 ? "36px" : "48px" }}
+      >
         <p>
-          Number of Guesses <span>{numberOfGuesses}</span>
+          Number of Guesses{" "}
+          <span
+            style={{ fontSize: devicePixelRatio >= 1.25 ? "48px" : "64px" }}
+          >
+            {numberOfGuesses}
+          </span>
         </p>
       </div>
       {cardOnTopOfDeck && <CardOnTop card={cardOnTopOfDeck} />}
@@ -256,7 +263,6 @@ export const getServerSideProps = async () => {
       },
     };
   } catch (error) {
-    console.error("Error fetching animal names:", error);
     return {
       props: {
         cardsForPlayingProps: [],

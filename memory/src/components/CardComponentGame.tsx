@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-
 import { Card } from "src/types/types";
+import { mainContext } from "src/context/mainContext";
 
 interface CardComponentProps {
   card: Card;
@@ -25,6 +25,7 @@ const CardComponentGame: React.FC<CardComponentProps> = ({
     opacity: 1,
     rotate: 0,
   };
+  const { devicePixelRatio } = useContext(mainContext);
 
   return (
     <motion.div
@@ -54,6 +55,8 @@ const CardComponentGame: React.FC<CardComponentProps> = ({
         pointerEvents: card.isFlipped ? "none" : "initial",
         scale: card.isAnimating ? "1.5" : "1",
         zIndex: card.isAnimating ? "20" : "initial",
+        height: devicePixelRatio >= 1.25 ? "80px" : "100px",
+        width: devicePixelRatio >= 1.25 ? "80px" : "100px",
       }}
       onClick={() => handleCardClick(card)}
     >

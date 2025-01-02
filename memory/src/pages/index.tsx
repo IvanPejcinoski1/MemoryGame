@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import CardComponentFrontPage from "src/components/CardComponentFrontPage";
 import { mainContext } from "src/context/mainContext";
-import { Position, StartGameProps } from "src/types/types";
+import { StartGameProps, Position } from "src/types/types";
 
 const StartGame: React.FC<StartGameProps> = ({ cardsForFrontPageProps }) => {
   const { clearTable, setClearTable, setSlideUp, slideUp } =
@@ -132,8 +132,6 @@ export const getServerSideProps = async () => {
 
     return { props: { cardsForFrontPageProps } };
   } catch (error) {
-    console.error("Error fetching animal images:", error);
-
     return {
       props: {
         cardsForFrontPageProps: [],
