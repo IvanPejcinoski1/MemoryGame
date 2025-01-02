@@ -43,7 +43,7 @@ const InGame: React.FC<InGameProps> = ({ cardsForPlayingProps }) => {
   useEffect(() => {
     if (opennedCards.length == 2) {
       setTimeout(() => {
-        setNumberOfGuesses((prev: any) => prev + 1);
+        setNumberOfGuesses((prev) => prev + 1);
       }, 700);
 
       if (opennedCards[0].name == opennedCards[1].name) {
@@ -263,6 +263,7 @@ export const getServerSideProps = async () => {
       },
     };
   } catch (error) {
+    console.log(error);
     return {
       props: {
         cardsForPlayingProps: [],

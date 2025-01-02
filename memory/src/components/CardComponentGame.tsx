@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import { Card } from "src/types/types";
 import { mainContext } from "src/context/mainContext";

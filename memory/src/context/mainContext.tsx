@@ -22,7 +22,7 @@ interface ContextData {
   setSlideUp: (value: boolean) => void;
   playAgain: () => Promise<Card[]>;
   numberOfGuesses: number;
-  setNumberOfGuesses: (num: any) => void;
+  setNumberOfGuesses: React.Dispatch<React.SetStateAction<number>>;
   devicePixelRatio: number;
 }
 
@@ -31,9 +31,9 @@ export const mainContext = createContext({} as ContextData);
 export const MainProvider: React.FC<Props> = ({ children }) => {
   const [slideUp, setSlideUp] = useState(false);
   const [clearTable, setClearTable] = useState(false);
-  const [animalNames, setAnimalNames] = useState<string[]>([]);
+  const [animalNames] = useState<string[]>([]);
   const [firstCardOpenned, setFirstCardOpenned] = useState<Card | null>(null);
-  const [numberOfGuesses, setNumberOfGuesses] = useState<any>(0);
+  const [numberOfGuesses, setNumberOfGuesses] = useState<number>(0);
 
   const getRandomAnimals = (arr: string[], n: number): string[] => {
     const filteredArr = arr.filter((animal) => animal !== "flippedCard");
@@ -97,6 +97,7 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
         position: predefinedLandingPositions[index],
       }));
     } catch (error) {
+      console.log(error);
       throw new Error("Failed to start a new game.");
     }
   };

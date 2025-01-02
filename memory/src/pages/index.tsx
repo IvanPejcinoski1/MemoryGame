@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import CardComponentFrontPage from "src/components/CardComponentFrontPage";
 import { mainContext } from "src/context/mainContext";
 import { StartGameProps, Position } from "src/types/types";
@@ -132,6 +132,7 @@ export const getServerSideProps = async () => {
 
     return { props: { cardsForFrontPageProps } };
   } catch (error) {
+    console.log(error);
     return {
       props: {
         cardsForFrontPageProps: [],
