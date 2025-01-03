@@ -121,7 +121,6 @@ $white-off: #fcfcfc; // Off-white
   border-radius: 15px;
   position: absolute;
   box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
-
   cursor: pointer;
   .card-content {
     width: 100%;
@@ -162,6 +161,8 @@ $white-off: #fcfcfc; // Off-white
   border-radius: 15px;
   position: absolute;
   box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
+  height: 19vh !important;
+  width: 19vh !important;
   &.left {
     transition: transform 2.5s ease-out, opacity 2.5s ease-out !important;
     transform: translate(-200vw, 0) !important;
@@ -216,7 +217,6 @@ $white-off: #fcfcfc; // Off-white
 #cardOnTop {
   position: absolute;
   left: calc(90vw - 75px);
-
   background-size: cover;
   width: 150px;
   height: 150px;
@@ -250,7 +250,7 @@ $white-off: #fcfcfc; // Off-white
     left: 50%;
     top: 3%;
     transform: translateX(-50%);
-    font-size: 48px;
+    font-size: 2.7rem;
     color: $white-off;
     text-align: center;
 
@@ -262,6 +262,7 @@ $white-off: #fcfcfc; // Off-white
       padding: 0px 26px;
       span {
         color: $orange-bright;
+        font-size: 3.1rem;
       }
     }
   }

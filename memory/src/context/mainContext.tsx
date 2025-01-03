@@ -53,7 +53,7 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
 
   const playAgain = async (): Promise<Card[]> => {
     try {
-      const res = await fetch("http://localhost:3001/api/images");
+      const res = await fetch("http://localhost:3000/api/server");
       const animalNames: string[] = await res.json();
       const updatedAnimalNames = animalNames.filter(
         (name) => name !== "flippedCard.png"

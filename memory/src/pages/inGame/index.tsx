@@ -19,7 +19,6 @@ const InGame: React.FC<InGameProps> = ({ cardsForPlayingProps }) => {
     playAgain,
     numberOfGuesses,
     setNumberOfGuesses,
-    devicePixelRatio,
   } = useContext(mainContext);
   const router = useRouter();
 
@@ -95,17 +94,9 @@ const InGame: React.FC<InGameProps> = ({ cardsForPlayingProps }) => {
           />
         ))}
       </div>
-      <div
-        className="counterDiv"
-        style={{ fontSize: devicePixelRatio >= 1.25 ? "36px" : "48px" }}
-      >
+      <div className="counterDiv">
         <p>
-          Number of Guesses{" "}
-          <span
-            style={{ fontSize: devicePixelRatio >= 1.25 ? "48px" : "64px" }}
-          >
-            {numberOfGuesses}
-          </span>
+          Number of Guesses <span>{numberOfGuesses}</span>
         </p>
       </div>
       {cardOnTopOfDeck && <CardOnTop card={cardOnTopOfDeck} />}
@@ -206,7 +197,7 @@ export const getServerSideProps = async () => {
 
   try {
     // Fetch animal names from the API
-    const res = await fetch("http://localhost:3001/api/images");
+    const res = await fetch("http://localhost:3000/api/server");
     const animalNames: string[] = await res.json();
     const updatedAnimalNames = animalNames.filter(
       (name) => name !== "flippedCard.png"

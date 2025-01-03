@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { useRouter } from "next/router";
 import React, { useContext } from "react";
 import { mainContext } from "src/context/mainContext";
 import { FrontPageCard } from "src/types/types";
@@ -10,7 +9,6 @@ interface CardProps {
 
 const CardComponent: React.FC<CardProps> = ({ card }) => {
   const { clearTable } = useContext(mainContext);
-  const router = useRouter();
 
   return (
     <motion.div
@@ -36,8 +34,6 @@ const CardComponent: React.FC<CardProps> = ({ card }) => {
       }}
       style={{
         backgroundImage: `url(/images/cardImages/${card.image})`,
-        width: `${router.pathname === "/inGame" ? "100px" : "170px"}`,
-        height: `${router.pathname === "/inGame" ? "100px" : "170px"}`,
       }}
     />
   );

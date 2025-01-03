@@ -28,7 +28,7 @@ The project combines modern web development technologies to deliver an interacti
 - **SCSS**: For enhanced CSS styling.
 - **Framer motion**: For smooth animations like card flipping and transitions.
 - **React.memo and useMemo**: Used to optimize performance by preventing unnecessary re-renders of components. React.memo is applied to memoize the CardComponentGame and useMemo is used for values that don't need to be recomputed on every render.
-- **Express**: Used as the server framework for handling API routes and server-side logic.
+- **Next.js API Route**: Utilizes Next.js API route functionality to handle server-side logic within the application.
 
 ## **Setup and Installation**
 
@@ -47,5 +47,4 @@ The project combines modern web development technologies to deliver an interacti
 2. Navigate to the project directory: cd memory
 3. Install dependencies: npm install
 4. Start the development server:npm run dev
-5. Start the server:node server.js
-6. Visit http://localhost:3000 to play the game.
+5. Visit http://localhost:3000 to play the game.

@@ -25,8 +25,8 @@ const CardComponentGame: React.FC<CardComponentProps> = ({
     opacity: 1,
     rotate: 0,
   };
-  const { devicePixelRatio } = useContext(mainContext);
 
+  const { devicePixelRatio } = useContext(mainContext);
   return (
     <motion.div
       id="cardComponentGame"

@@ -105,7 +105,7 @@ export const getServerSideProps = async () => {
   ];
 
   try {
-    const res = await fetch("http://localhost:3001/api/images");
+    const res = await fetch("http://localhost:3000/api/server");
 
     if (!res.ok) {
       throw new Error(`Failed to fetch animal images. Status: ${res.status}`);
