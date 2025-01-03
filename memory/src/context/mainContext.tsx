@@ -51,9 +51,11 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
   const randomInRange = (min: number, max: number): number =>
     Math.random() * (max - min) + min;
 
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
   const playAgain = async (): Promise<Card[]> => {
     try {
-      const res = await fetch("http://localhost:3000/api/server");
+      const res = await fetch(`${apiUrl}`);
       const animalNames: string[] = await res.json();
       const updatedAnimalNames = animalNames.filter(
         (name) => name !== "flippedCard.png"

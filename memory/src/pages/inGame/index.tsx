@@ -195,9 +195,11 @@ export const getServerSideProps = async () => {
   const randomInRange = (min: number, max: number): number =>
     Math.random() * (max - min) + min;
 
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
   try {
     // Fetch animal names from the API
-    const res = await fetch("http://localhost:3000/api/server");
+    const res = await fetch(`${apiUrl}`);
     const animalNames: string[] = await res.json();
     const updatedAnimalNames = animalNames.filter(
       (name) => name !== "flippedCard.png"

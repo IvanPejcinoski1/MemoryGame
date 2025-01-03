@@ -103,9 +103,10 @@ export const getServerSideProps = async () => {
     { x: 23, y: 73, angle: -14 },
     { x: 67, y: 67, angle: 10 },
   ];
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   try {
-    const res = await fetch("http://localhost:3000/api/server");
+    const res = await fetch(`${apiUrl}`);
 
     if (!res.ok) {
       throw new Error(`Failed to fetch animal images. Status: ${res.status}`);
